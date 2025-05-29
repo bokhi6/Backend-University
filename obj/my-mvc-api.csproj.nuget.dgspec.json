@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\rolit\\Source\\back\\my-mvc-api\\my-mvc-api.csproj",
-        "projectName": "my-mvc-api",
+        "projectName": "Api-University",
         "projectPath": "C:\\Users\\rolit\\Source\\back\\my-mvc-api\\my-mvc-api.csproj",
         "packagesPath": "C:\\Users\\rolit\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\rolit\\Source\\back\\my-mvc-api\\obj\\",

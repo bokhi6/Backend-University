@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using my_mvc_api.Data;
-using my_mvc_api.Models;
-using my_mvc_api.Models.DTOs;
+using Api_University.Data;
+using Api_University.Models;
+using Api_University.Models.DTOs;
 
-namespace my_mvc_api.Controllers
+namespace Api_University.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

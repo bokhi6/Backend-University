@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using my_mvc_api.Models;
+using Api_University.Models;
 using System;
 
-namespace my_mvc_api.Data
+namespace Api_University.Data
 {
     public class ApplicationDbContext : DbContext
     {

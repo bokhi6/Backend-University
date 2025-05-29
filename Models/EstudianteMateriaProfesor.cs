@@ -1,4 +1,4 @@
-namespace my_mvc_api.Models
+namespace Api_University.Models
 {
     public class EstudianteMateriaProfesor
     {

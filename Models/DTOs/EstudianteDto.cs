@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace my_mvc_api.Models.DTOs
+namespace Api_University.Models.DTOs
 {
     public class EstudianteDto
     {

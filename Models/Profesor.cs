@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace my_mvc_api.Models
+namespace Api_University.Models
 {
     public class Profesor
     {

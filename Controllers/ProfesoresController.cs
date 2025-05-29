@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using my_mvc_api.Data;
-using my_mvc_api.Models;
+using Api_University.Data;
+using Api_University.Models;
 
-namespace my_mvc_api.Controllers
+namespace Api_University.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

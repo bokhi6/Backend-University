@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace my_mvc_api.Migrations
+namespace Api_University.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

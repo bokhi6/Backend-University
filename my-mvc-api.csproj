@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <RootNamespace>my_mvc_api</RootNamespace>
+    <RootNamespace>Api_University</RootNamespace>
+    <AssemblyName>Api-University</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

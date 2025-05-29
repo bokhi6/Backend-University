@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using my_mvc_api.Data;
+using Api_University.Data;
 
 #nullable disable
 
-namespace my_mvc_api.Migrations
+namespace Api_University.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250529040651_AddEstudiantesEjemplo")]
@@ -20,7 +20,7 @@ namespace my_mvc_api.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
-            modelBuilder.Entity("my_mvc_api.Models.Estudiante", b =>
+            modelBuilder.Entity("Api_University.Models.Estudiante", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace my_mvc_api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("my_mvc_api.Models.EstudianteMateriaProfesor", b =>
+            modelBuilder.Entity("Api_University.Models.EstudianteMateriaProfesor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,7 +154,7 @@ namespace my_mvc_api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("my_mvc_api.Models.Materia", b =>
+            modelBuilder.Entity("Api_University.Models.Materia", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -248,7 +248,7 @@ namespace my_mvc_api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("my_mvc_api.Models.Profesor", b =>
+            modelBuilder.Entity("Api_University.Models.Profesor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -289,21 +289,21 @@ namespace my_mvc_api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("my_mvc_api.Models.EstudianteMateriaProfesor", b =>
+            modelBuilder.Entity("Api_University.Models.EstudianteMateriaProfesor", b =>
                 {
-                    b.HasOne("my_mvc_api.Models.Estudiante", "Estudiante")
+                    b.HasOne("Api_University.Models.Estudiante", "Estudiante")
                         .WithMany("EstudianteMateriaProfesores")
                         .HasForeignKey("EstudianteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("my_mvc_api.Models.Materia", "Materia")
+                    b.HasOne("Api_University.Models.Materia", "Materia")
                         .WithMany("EstudianteMateriaProfesores")
                         .HasForeignKey("MateriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("my_mvc_api.Models.Profesor", "Profesor")
+                    b.HasOne("Api_University.Models.Profesor", "Profesor")
                         .WithMany()
                         .HasForeignKey("ProfesorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -316,9 +316,9 @@ namespace my_mvc_api.Migrations
                     b.Navigation("Profesor");
                 });
 
-            modelBuilder.Entity("my_mvc_api.Models.Materia", b =>
+            modelBuilder.Entity("Api_University.Models.Materia", b =>
                 {
-                    b.HasOne("my_mvc_api.Models.Profesor", "Profesor")
+                    b.HasOne("Api_University.Models.Profesor", "Profesor")
                         .WithMany("Materias")
                         .HasForeignKey("ProfesorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -327,17 +327,17 @@ namespace my_mvc_api.Migrations
                     b.Navigation("Profesor");
                 });
 
-            modelBuilder.Entity("my_mvc_api.Models.Estudiante", b =>
+            modelBuilder.Entity("Api_University.Models.Estudiante", b =>
                 {
                     b.Navigation("EstudianteMateriaProfesores");
                 });
 
-            modelBuilder.Entity("my_mvc_api.Models.Materia", b =>
+            modelBuilder.Entity("Api_University.Models.Materia", b =>
                 {
                     b.Navigation("EstudianteMateriaProfesores");
                 });
 
-            modelBuilder.Entity("my_mvc_api.Models.Profesor", b =>
+            modelBuilder.Entity("Api_University.Models.Profesor", b =>
                 {
                     b.Navigation("Materias");
                 });

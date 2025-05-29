@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using my_mvc_api.Data;
+using Api_University.Data;
 
-namespace my_mvc_api
+namespace Api_University
 {
     public class Startup
     {
