@@ -214,13 +214,8 @@ Ya está configurado `ReferenceHandler.IgnoreCycles` en `Startup.cs`
 
 ## 👥 Autores
 
-- [Tu Nombre] - Desarrollo inicial
+- Yurley Loaiza - Desarrollo inicial
 
-## 📄 Licencia
-
-Este proyecto es parte de un ejercicio académico.
-
----
 
 ## 📞 Soporte
 
@@ -230,5 +225,3 @@ Si tienes problemas durante la instalación o ejecución:
 2. Revisar que las migraciones se aplicaron: verificar archivo `estudiantes.db`
 3. Comprobar que el puerto 5000 esté disponible
 4. Consultar logs en consola para errores específicos
-
-**¡La aplicación está lista para conectarse con el frontend Angular!** 🎉
