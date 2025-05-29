@@ -195,5 +195,103 @@ namespace Api_University.Controllers
 
             return Ok(companeros);
         }
+
+        // DELETE: api/estudiantes/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEstudiante(int id)
+        {
+            var estudiante = await _context.Estudiantes.FindAsync(id);
+            if (estudiante == null)
+            {
+                return NotFound();
+            }
+
+            // Entity Framework eliminará automáticamente las relaciones 
+            // en EstudianteMateriaProfesores debido a CASCADE DELETE
+            _context.Estudiantes.Remove(estudiante);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // PUT: api/estudiantes/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutEstudiante(int id, EstudianteDto estudianteDto)
+        {
+            var estudiante = await _context.Estudiantes
+                .Include(e => e.EstudianteMateriaProfesores)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (estudiante == null)
+            {
+                return NotFound();
+            }
+
+            // Validar que solo seleccione 3 materias
+            if (estudianteDto.MateriaIds.Count != 3)
+            {
+                return BadRequest("El estudiante debe seleccionar exactamente 3 materias.");
+            }
+
+            // Validar que las materias existan
+            var materias = await _context.Materias
+                .Include(m => m.Profesor)
+                .Where(m => estudianteDto.MateriaIds.Contains(m.Id))
+                .ToListAsync();
+
+            if (materias.Count != 3)
+            {
+                return BadRequest("Una o más materias seleccionadas no existen.");
+            }
+
+            // Validar que no tenga clases con el mismo profesor
+            var profesorIds = materias.Select(m => m.ProfesorId).ToList();
+            if (profesorIds.Distinct().Count() != profesorIds.Count)
+            {
+                return BadRequest("No puedes tener clases con el mismo profesor.");
+            }
+
+            // Actualizar datos del estudiante
+            estudiante.Nombre = estudianteDto.Nombre;
+            estudiante.Email = estudianteDto.Email;
+
+            // Eliminar relaciones existentes
+            _context.EstudianteMateriaProfesores.RemoveRange(estudiante.EstudianteMateriaProfesores);
+
+            // Crear nuevas relaciones
+            foreach (var materia in materias)
+            {
+                var emp = new EstudianteMateriaProfesor
+                {
+                    EstudianteId = estudiante.Id,
+                    MateriaId = materia.Id,
+                    ProfesorId = materia.ProfesorId
+                };
+                _context.EstudianteMateriaProfesores.Add(emp);
+            }
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EstudianteExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool EstudianteExists(int id)
+        {
+            return _context.Estudiantes.Any(e => e.Id == id);
+        }
     }
 }

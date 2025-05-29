@@ -60,7 +60,7 @@ Api-University/
 
 1. **Clonar el repositorio**
    ```bash
-   git clone [URL_DEL_REPOSITORIO]
+   git clone https://github.com/bokhi6/Backend-University.git
    cd Api-University
    ```
 
